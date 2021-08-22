@@ -3,11 +3,23 @@ import { gql } from '@apollo/client'
 export const typeDefs = gql`
   type User {
     id: ID!
-    name: String!
-    status: String!
+    username: String!
+    email: String!
+    password: String!
+  }
+
+  type Post {
+      id: ID!
+      title: String!
+      description: String
+      status: String!
+      date_created: String!
+      author: User
   }
 
   type Query {
-    viewer: User
+    users: [User]
+    posts: [Post]
+    post(id: Int!): Post
   }
 `
